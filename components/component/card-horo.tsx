@@ -26,7 +26,7 @@ export default function CardHero({ post }: CardHeroProps) {
   const { title, featured_media, date, categories, slug, key } = post;
   const coverImageUrl = featured_media
     ? post._embedded["wp:featuredmedia"][0].source_url
-    : null;
+    : "";
   const categoryName =
     categories.length > 0 ? post._embedded["wp:term"][0][0].name : null;
   const author = post._embedded["author"][0];

@@ -104,7 +104,7 @@ async function getAllPosts(page = 1, perPage = 6) {
 
       return {
         posts: data,
-        totalPosts: response.headers.get("X-WP-Total"),
+        totalPosts: parseInt(response.headers.get("X-WP-Total") || "0", 10), // Convert to number
       };
     } else {
       // Handle the case where 'data' is undefined

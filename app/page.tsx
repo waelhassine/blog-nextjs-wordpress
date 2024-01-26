@@ -64,19 +64,21 @@ export default async function Home({ searchParams }: HomePageParams) {
             </Link>
           </PaginationItem>
 
-          {[...Array(Math.ceil(totalPosts / perPage))].map((_, index) => (
-            <PaginationItem key={index}>
-              <Link href={`/?page=${index + 1}`} legacyBehavior>
-                <PaginationLink isActive={index + 1 === pageNumber}>
-                  {index + 1}
-                </PaginationLink>
-              </Link>
-            </PaginationItem>
-          ))}
+          {[...Array(Math.ceil((totalPosts as number) / perPage))].map(
+            (_, index) => (
+              <PaginationItem key={index}>
+                <Link href={`/?page=${index + 1}`} legacyBehavior>
+                  <PaginationLink isActive={index + 1 === pageNumber}>
+                    {index + 1}
+                  </PaginationLink>
+                </Link>
+              </PaginationItem>
+            ),
+          )}
           <PaginationItem>
             <Link
               href={`/?page=${Math.min(
-                Math.ceil(totalPosts / perPage),
+                Math.ceil((totalPosts as number) / perPage),
                 pageNumber + 1,
               )}`}
               legacyBehavior
